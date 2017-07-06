@@ -7,7 +7,27 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-    <div class="mapContainer"></div>
+    <div class="gameConatiner">
+        <div class="mapContainer">
+            <div class="outerContainer1">
+                <div class="mainContainer">
+                    <div class="firstSquare"></div>
+                    <div class="secondSquare"></div>
+                    <div class="innerCircle"></div>
+                    <div class="outerCircle"></div>
+                    <div class="first arm"></div>
+                    <div class="second arm"></div>
+                    <div class="third arm"></div>
+                    <div class="fourth arm"></div>
+                    <div class="fifth arm"></div>
+                    <div class="sixth arm"></div>
+                    <div class="seventh arm"></div>
+                    <div class="eigth arm"></div>
+                </div>
+            </div>
+        </div>
+        <div class="rigtSide"></div>
+    </div>
 </body>
 </html>
 
@@ -38,7 +58,6 @@
 
         function mapGenerator () {
             let mapcontainer = document.querySelector('.mapContainer');
-
             for (let row = 0; row < map.length; row++ ) {
                 for (let tile = 0; tile < map[row].length; tile++ ) {
                     let createdTile = document.createElement('div');
