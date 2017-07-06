@@ -48,6 +48,12 @@
                     }
                     if (map[row][tile] == 1) {
                         createdTile.setAttribute('class', 'road');
+                        if (row == 0) {
+                            createdTile.setAttribute('class', 'entry');
+                        }
+                        if (tile == 21) {
+                            createdTile.setAttribute('class', 'exit');
+                        }
                     }
                 }
             }
