@@ -128,7 +128,7 @@ body {
     position: absolute;
     top: -1000px;
     animation-name: moving;
-    animation-duration: 61s;
+    animation-duration: 610s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;

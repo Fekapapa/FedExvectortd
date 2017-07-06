@@ -1,44 +1,68 @@
+'use strict';
+
 const oneElement = document.querySelector('.outerContainer1');
-const oneLaser = document.querySelector('.laser34');
+const oneTower = document.querySelectorAll('.buildable')[54];
 
-var getPosition = function() {
-    console.log('alma')
-    console.log(oneElement);
-        var oneElementPosition = oneElement.getBoundingClientRect();
-        var xOneELement = {
-            xLeft: oneElementPosition.left,
-            xRight: oneElementPosition.right
-        }
-        var yOneElement = {
-            yTop: oneElementPosition.top,
-            yBottom: oneElementPosition.bottom
-        }
-        console.log('yOneElement: ', yOneElement);
-        // console.log(oneElementPosition);
-        // console.log('enemey position: ', '\n', 'top: ', oneElementPosition.top, '\n', 'left: ', oneElementPosition.left);
-        var oneLaserPosition = oneLaser.getBoundingClientRect();
-        var xOneLaser = {
-            xLeft: oneLaserPosition.left,
-            xRight: oneLaserPosition.right
-        }
-        var yOneLaser = {
-            yTop: oneLaserPosition.top,
-            yBottom: oneLaserPosition.bottom
-        }
-        console.log('yOneLaser: ', yOneLaser);
-}
+console.log(document.querySelectorAll('.buildable')[57]);
+console.log(oneTower);
 
-// var targetSystem = function(enemy, tower) {
-//
+
+var oneTowerPosition = oneTower.getBoundingClientRect();
+console.log(oneTowerPosition);
+// var xOneTower = {
+//     left: oneTowerPosition.left - (oneTowerPosition.height * 5),
+//     right: oneTowerPosition.right - (oneTowerPosition.height * 2)
+// }
+// var yOneTower = {
+//     top: oneTowerPosition.top - (oneTowerPosition.height * 2),
+//     bottom: oneTowerPosition.bottom + (oneTowerPosition.height * 2)
 // }
 
+// console.log('Tower X: ', xOneTower, '\n', 'Tower Y: ', yOneTower);
+
+var getPosition = function() {
+
+    var oneElementPosition = oneElement.getBoundingClientRect();
+    var xOneElement = {
+        left: oneElementPosition.left,
+        right: oneElementPosition.right
+    }
+    var yOneElement = {
+        top: oneElementPosition.top,
+        bottom: oneElementPosition.bottom
+    }
+    console.log(oneElementPosition);
+
+    var oneTowerPosition = oneTower.getBoundingClientRect();
+    var xOneTower = {
+        left: oneTowerPosition.left,
+        right: oneTowerPosition.right
+    }
+    var yOneTower = {
+        top: oneTowerPosition.top - (oneTowerPosition.height * 2),
+        bottom: oneTowerPosition.bottom + (oneTowerPosition.height * 2)
+    }
+    // console.log(oneElement.childNodes[0], oneElement.childNodes[1]);
+    targetSystem(xOneElement, yOneElement, xOneTower, yOneTower);
+}
+
+var targetSystem = function(enemyX, enemyY, towerX, towerY) {
+    // const oneElement = document.querySelectorAll('.mainContainer div');
+    if (towerX.right >= enemyX.left && towerX.left <= enemyX.right){
+        if (towerY.bottom >= enemyY.top && towerY.top <= enemyY.bottom) {
+            // console.log(enemyX, enemyY);
+            console.log('TOWER TARGETING!')
+            var nodes = document.querySelectorAll('.mainContainer div');
+            for(var i=0; i<nodes.length; i++) {
+                nodes[i].style.borderColor = 'yellow';
+            }
+        }
+    } else {
+        var nodes = document.querySelectorAll('.mainContainer div');
+        for(var i=0; i<nodes.length; i++) {
+            nodes[i].style.borderColor = 'red';
+        }
+    }
+}
+
 setInterval(function(){ getPosition(); }, 1000);
-
-
-ClientRect {top: 418, right: -85.02961730957031, bottom: 418, left: -135.0296173095703, width: 50…}
-bottom:418
-height:0
-left:-135.0296173095703
-right:-85.02961730957031
-top:418
-width:50
