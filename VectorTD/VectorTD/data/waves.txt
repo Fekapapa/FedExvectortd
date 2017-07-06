@@ -1,0 +1,89 @@
+Game link: http://www.coolstreaming.us/forum/arcade/game/2455.html
+
+2 * 14 vectocids in a wave.
+Last one from grey is double hp and has different visualization.
+Normal vectocid speed is 2 tile / 1000ms, yellows are 2x faster.
+1 tile is 21px * 21px + border.
+Starting money: 250.
+Score = all money gain.
+
+waves:
+[['blue', 550, 3], ['red', 660, 4], ['blue', 769, 5], ['green', 896, 6], ['grey', 1045, 7],
+['yellow', 1185, 8], ['blue', 1422, 9], ['purple', 1658, 10], ['blue', 1934, 11], ['grey', 2256, 12],
+['blue', 2631, 13], ['green', 3069, 14], ['blue', 3580, 15], ['yellow', 4177, 16], ['grey', 4873, 17],
+['purple', 5684, 18], ['blue', 6631, 19], ['red', 7736, 20], ['blue', 9025, 21], ['grey', 10528, 22],
+['blue', 12283, 23], ['yellow', 14330, 24], ['blue', 16719, 25], ['purple', 19504, 26], ['grey', 22755, 27],
+['red', 26547, 28], ['blue', 30011, 29], ['green', 36133, 30], ['blue', 42154, 31], ['grey', 49179, 32],
+['yellow', 57375, 33], ['blue', 66937, 34], ['purple', 78092, 35], ['blue', 91107, 36], ['grey', 106291, 37],
+['purple', 124005, 38], ['blue', 144673, 39], ['red', 168784, 40], ['blue', 191445, 41], ['multicolor', 229734, 42]]
+
+map(22x18):
+[[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0],
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+
+greenlaser1 (attackspeed 100ms, single target)
+damage 22 range 70
+upg.: 50 money, +10 damage, +3 range
+
+greenlaser2 (attackspeed 100ms, double target)
+damage 45 range 70
+upg.: 200 money, +20 damage, +3 range
+
+greenlaser3 (attackspeed 100ms, triple target)
+damage 180 range 70
+upg.: 1000 money, +81 damage, +3 range
+
+
+
+redlaser1 (attackspeed 200ms, single target and 25% 2 tile splash damage)
+damage 110 range 80
+upg.: 100 money, +49 damage, +4 range
+
+redlaser2 (attackspeed 100ms, single target mini-missle, random target)
+damage 400 range 80
+upg.: 400 money, +181 damage, +4 range
+
+redlaser3 (attackspeed 1000ms, single target missle, homing)
+damage 30000 range 150
+upg.: 1250 money, +13636 damage, +7 range
+
+
+
+purplelaser1 (attackspeed 1000ms, single target)
+damage 2650 range 100
+upg.: 150 money, +1204 damage, +5 range
+
+purplelaser2 (attackspeed 1000ms, single target)
+damage 8500 range 100
+upg.: 450 money, +3863 damage, +5 range
+
+purplelaser3 (attackspeed 1000ms, single target, stop for 500ms)
+damage 22000 range 100
+upg.: 1400 money, +10000 damage, +5 range
+
+
+
+bluelaser1 (attackspeed 1000ms, single target, half speed for 500ms)
+damage 1000 range 70
+upg.: 150 money, +454 damage, +3 range
+
+bluelaser2 (attackspeed 1000ms, single target, stop for 500ms)
+damage 6000 range 80
+upg.: 250 money, +1727 damage, +4 range
