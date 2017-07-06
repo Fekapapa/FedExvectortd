@@ -62,10 +62,11 @@ var MassVectocid = (function() {
         ['yellow', 57375, 33], ['blue', 66937, 34], ['purple', 78092, 35], ['blue', 91107, 36], ['grey', 106291, 37],
         ['purple', 124005, 38], ['blue', 144673, 39], ['red', 168784, 40], ['blue', 191445, 41], ['multicolor', 229734, 42]]
 
+    var waveCounter = 0;
     var oneWave = [];
     var vectocidCounter = 0;
 
-    function vectocidGenerator () {
+    function vectocidGenerator() {
         vectocidCounter++;
         let mapcontainer = document.querySelector('.mapContainer');
 
@@ -73,6 +74,7 @@ var MassVectocid = (function() {
         mapcontainer.appendChild(outerContainer);
 
         if (vectocidCounter % 2 == 1) {
+            oneWave.push(waves[waveCounter]);
             outerContainer.setAttribute('class', 'outerContainer1');
 
             var mainContainer = document.createElement('div');
@@ -81,6 +83,7 @@ var MassVectocid = (function() {
         }
 
         if (vectocidCounter % 2 == 0) {
+            oneWave.push(waves[waveCounter]);
             outerContainer.setAttribute('class', 'outerContainer2');
 
             var mainContainer = document.createElement('div');
@@ -90,84 +93,108 @@ var MassVectocid = (function() {
             if (vectocidCounter < 28) {
                 MassVectocid.generatorStarter();
             }
-
         }
 
-        let firstSquare = document.createElement('div');
-        mainContainer.appendChild(firstSquare);
-        firstSquare.setAttribute('class', 'firstSquare');
+        if (waves[waveCounter][0] == 'blue') {
+            let blueSquare = document.createElement('div');
+            mainContainer.appendChild(blueSquare);
+            blueSquare.setAttribute('class', 'blueSquare');
+        }
 
-        let secondSquare = document.createElement('div');
-        mainContainer.appendChild(secondSquare);
-        secondSquare.setAttribute('class', 'secondSquare');
+        if (waves[waveCounter][0] == 'green') {
+            let greenSquare = document.createElement('div');
+            mainContainer.appendChild(greenSquare);
+            greenSquare.setAttribute('class', 'greenSquare');
+        }
 
-        let innerCircle = document.createElement('div');
-        mainContainer.appendChild(innerCircle);
-        innerCircle.setAttribute('class', 'innerCircle');
+        if (waves[waveCounter][0] == 'purple') {
+            let purpleSquare = document.createElement('div');
+            mainContainer.appendChild(purpleSquare);
+            purpleSquare.setAttribute('class', 'purpleSquare');
+        }
 
-        let outerCircle = document.createElement('div');
-        mainContainer.appendChild(outerCircle);
-        outerCircle.setAttribute('class', 'outerCircle');
+        if (waves[waveCounter][0] == 'grey') {
+            let greySquare = document.createElement('div');
+            mainContainer.appendChild(greySquare);
+            greySquare.setAttribute('class', 'greySquare');
+        }
 
-        let firstarm = document.createElement('div');
-        mainContainer.appendChild(firstarm);
-        firstarm.setAttribute('class', 'first arm');
+        if (waves[waveCounter][0] == 'yellow') {
+            let yellowSquare = document.createElement('div');
+            mainContainer.appendChild(yellowSquare);
+            yellowSquare.setAttribute('class', 'yellowSquare');
+        }
 
-        let secondarm = document.createElement('div');
-        mainContainer.appendChild(secondarm);
-        secondarm.setAttribute('class', 'second arm');
+        if (waves[waveCounter][0] == 'red') {
+            let firstSquare = document.createElement('div');
+            mainContainer.appendChild(firstSquare);
+            firstSquare.setAttribute('class', 'firstSquare');
 
-        let thirdarm = document.createElement('div');
-        mainContainer.appendChild(thirdarm);
-        thirdarm.setAttribute('class', 'third arm');
+            let secondSquare = document.createElement('div');
+            mainContainer.appendChild(secondSquare);
+            secondSquare.setAttribute('class', 'secondSquare');
 
-        let fourtharm = document.createElement('div');
-        mainContainer.appendChild(fourtharm);
-        fourtharm.setAttribute('class', 'fourth arm');
+            let innerCircle = document.createElement('div');
+            mainContainer.appendChild(innerCircle);
+            innerCircle.setAttribute('class', 'innerCircle');
 
-        let fiftharm = document.createElement('div');
-        mainContainer.appendChild(fiftharm);
-        fiftharm.setAttribute('class', 'fifth arm');
+            let outerCircle = document.createElement('div');
+            mainContainer.appendChild(outerCircle);
+            outerCircle.setAttribute('class', 'outerCircle');
 
-        let sixtharm = document.createElement('div');
-        mainContainer.appendChild(sixtharm);
-        sixtharm.setAttribute('class', 'sixth arm');
+            let firstarm = document.createElement('div');
+            mainContainer.appendChild(firstarm);
+            firstarm.setAttribute('class', 'first arm');
 
-        let seventharm = document.createElement('div');
-        mainContainer.appendChild(seventharm);
-        seventharm.setAttribute('class', 'seventh arm');
+            let secondarm = document.createElement('div');
+            mainContainer.appendChild(secondarm);
+            secondarm.setAttribute('class', 'second arm');
 
-        let eigtharm = document.createElement('div');
-        mainContainer.appendChild(eigtharm);
-        eigtharm.setAttribute('class', 'eigth arm');
+            let thirdarm = document.createElement('div');
+            mainContainer.appendChild(thirdarm);
+            thirdarm.setAttribute('class', 'third arm');
 
-        // for (let row = 0; row < map.length; row++ ) {
-        //     for (let tile = 0; tile < map[row].length; tile++ ) {
-        //         let createdTile = document.createElement('div');
-        //         mapcontainer.appendChild(createdTile);
-        //         if (map[row][tile] == 0) {
-        //             createdTile.setAttribute('class', 'buildable');
-        //         }
-        //         if (map[row][tile] == 1) {
-        //             createdTile.setAttribute('class', 'road');
-        //             if (row == 0) {
-        //                 createdTile.setAttribute('class', 'entry');
-        //             }
-        //             if (tile == 21) {
-        //                 createdTile.setAttribute('class', 'exit');
-        //             }
-        //         }
-        //     }
-        // }
+            let fourtharm = document.createElement('div');
+            mainContainer.appendChild(fourtharm);
+            fourtharm.setAttribute('class', 'fourth arm');
+
+            let fiftharm = document.createElement('div');
+            mainContainer.appendChild(fiftharm);
+            fiftharm.setAttribute('class', 'fifth arm');
+
+            let sixtharm = document.createElement('div');
+            mainContainer.appendChild(sixtharm);
+            sixtharm.setAttribute('class', 'sixth arm');
+
+            let seventharm = document.createElement('div');
+            mainContainer.appendChild(seventharm);
+            seventharm.setAttribute('class', 'seventh arm');
+
+            let eigtharm = document.createElement('div');
+            mainContainer.appendChild(eigtharm);
+            eigtharm.setAttribute('class', 'eigth arm');
+        }
+        console.log(vectocidCounter);
+
+        if (vectocidCounter == 28) {
+            vectocidCounter = 0;
+            waveCounter++;
+        }
     }
 
-    function generatorStarter () {
-            setTimeout(function(){ vectocidGenerator(); }, 500);
-            setTimeout(function(){ vectocidGenerator(); }, 500);
+    function generatorStarter() {
+        setTimeout(function(){ vectocidGenerator(); }, 500);
+        setTimeout(function(){ vectocidGenerator(); }, 500);
+    }
+
+    function nextWave() {
+        if (vectocidCounter == 0) {
+            generatorStarter();
+        }
     }
 
     return {
+        nextWave: nextWave,
         generatorStarter: generatorStarter
     }
 })();
-MassVectocid.generatorStarter();
