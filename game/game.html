@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Map draw</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="gamestyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+    <div class="gameConatiner">
+        <div class="mapContainer">
+            <div class="outerContainer1">
+                <div class="mainContainer">
+                    <div class="firstSquare"></div>
+                    <div class="secondSquare"></div>
+                    <div class="innerCircle"></div>
+                    <div class="outerCircle"></div>
+                    <div class="first arm"></div>
+                    <div class="second arm"></div>
+                    <div class="third arm"></div>
+                    <div class="fourth arm"></div>
+                    <div class="fifth arm"></div>
+                    <div class="sixth arm"></div>
+                    <div class="seventh arm"></div>
+                    <div class="eigth arm"></div>
+                </div>
+            </div>
+        </div>
+        <div class="rigtSide"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    'use strict'
+
+    var Mapper = (function() {
+
+    var map = [
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+        function mapGenerator () {
+            let mapcontainer = document.querySelector('.mapContainer');
+            for (let row = 0; row < map.length; row++ ) {
+                for (let tile = 0; tile < map[row].length; tile++ ) {
+                    let createdTile = document.createElement('div');
+                    mapcontainer.appendChild(createdTile);
+                    if (map[row][tile] == 0) {
+                        createdTile.setAttribute('class', 'buildable');
+                    }
+                    if (map[row][tile] == 1) {
+                        createdTile.setAttribute('class', 'road');
+                        if (row == 0) {
+                            createdTile.setAttribute('class', 'entry');
+                        }
+                        if (tile == 21) {
+                            createdTile.setAttribute('class', 'exit');
+                        }
+                    }
+                }
+            }
+        }
+
+        return {
+            mapGenerator: mapGenerator
+        }
+    })();
+    Mapper.mapGenerator();
+
+</script>
