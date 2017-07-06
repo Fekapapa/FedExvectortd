@@ -11,6 +11,108 @@ body {
     flex-wrap: nowrap;
 }
 
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.topBoxContainer {
+    height: 80px;
+    width: 492px;
+    background-color: black;
+    z-index: 2;
+}
+
+.topBox {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 60px;
+    width: 482px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    background-color: pink;
+}
+
+.rightContainer {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    z-index: 2;
+}
+
+.firstBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 0px;
+    height: 140px;
+    width: 145px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    background-color: red;
+}
+
+.secondBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 0px;
+    height: 180px;
+    width: 145px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    background-color: yellow;
+}
+
+.thirdBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 0px;
+    height: 80px;
+    width: 145px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    background-color: blue;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 10px;
+    margin-left: 0px;
+    height: 30px;
+    width: 147px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+}
+
+.quitBox {
+    height: 28px;
+    width: 90px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(140, 7, 48);
+    background-color: rgb(246, 75, 127);
+}
+
+.pauseBox {
+    height: 28px;
+    width: 45px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(140, 7, 48);
+    background-color: rgb(246, 75, 127);
+}
+
 .rigtSide {
     height: 396px;
     width: 300px;
@@ -19,6 +121,7 @@ body {
 }
 
 .mapContainer {
+    margin-left: 10px;
     min-width: 484px;
     max-width: 484px;
     height: 396px;
