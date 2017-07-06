@@ -45,9 +45,6 @@ body {
     width: 22px;
     height: 22px;
     background: linear-gradient(to top, rgb(0, 35, 35) 20%, rgba(0, 135, 0, 1) 80%);
-    /*border-width: 1px;
-    border-top-style: solid;
-    border-color: rgb(12, 121, 119);*/
 }
 
 .exit {
