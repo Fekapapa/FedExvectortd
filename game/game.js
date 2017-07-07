@@ -67,6 +67,7 @@ var MassVectocid = (function() {
     var oneWave = [];
     var vectocidCounter = 0;
     var enemyList = [];
+    var globalIndex = 0;
 
     function vectocidGenerator() {
         vectocidCounter++;
@@ -202,6 +203,7 @@ var MassVectocid = (function() {
 
     return {
         oneWave: oneWave,
+        globalIndex: globalIndex,
         enemyList: enemyList,
         nextWave: nextWave,
         generatorStarter: generatorStarter
@@ -265,12 +267,13 @@ var TowerCreator = (function() {
     }
 })();
 
-
 var Targeter = (function() {
 
+    var enemyHP = 0;
     var enemyList = [];
     var vectocidCoorinates = [];
     var towerRanges = [];
+    var vectocidHealth = [];
 
     function coordinateCalculator () {
 
@@ -291,6 +294,7 @@ var Targeter = (function() {
         for (let i = 0; i < MassVectocid.enemyList.length; i++) {
             Targeter.vectocidCoorinates[i][0] = MassVectocid.enemyList[i].getBoundingClientRect().left;
             Targeter.vectocidCoorinates[i][1] = MassVectocid.enemyList[i].getBoundingClientRect().top;
+            Targeter.vectocidHealth = MassVectocid.oneWave[i][1];
         }
     }
 
@@ -313,23 +317,26 @@ var Targeter = (function() {
                 }
             }
         }
-        Targeter.targetSystem();
+        Targeter.targetSystem(MassVectocid.globalIndex);
     }
 
-    function targetSystem () {
+    function targetSystem(index) {
         for (let i = 0; i < Targeter.towerRanges.length; i++) {
-            if (Targeter.towerRanges[i][6]>= Targeter.vectocidCoorinates[0][0] && Targeter.towerRanges[i][5] <= Targeter.vectocidCoorinates[0][0]){
-                if (Targeter.towerRanges[i][8] >= Targeter.vectocidCoorinates[0][1] && Targeter.towerRanges[i][7] <= Targeter.vectocidCoorinates[0][1]) {
-                    Targeter.fire(i)
+            if (Targeter.towerRanges[i][6]>= Targeter.vectocidCoorinates[index][0] && Targeter.towerRanges[i][5] <= Targeter.vectocidCoorinates[index][0]){
+                if (Targeter.towerRanges[i][8] >= Targeter.vectocidCoorinates[index][1] && Targeter.towerRanges[i][7] <= Targeter.vectocidCoorinates[index][1]) {
+                    Targeter.fire(i, index)
                 }
             }
         }
     }
     // towerlist[color, attackspeed, cost, damage, range, x coordinate, y coordinate]
 
-    function fire(i) {
-        var deltaX = Targeter.vectocidCoorinates[0][0] - TowerCreator.towerList[i][5];
-        var deltaY = Targeter.vectocidCoorinates[0][1] - TowerCreator.towerList[i][6];
+    function fire(i, index) {
+        var towerDmg = TowerCreator.towerList[0][3];
+        var enemyHealth = Targeter.vectocidHealth;
+
+        var deltaX = Targeter.vectocidCoorinates[index][0] - TowerCreator.towerList[i][5];
+        var deltaY = Targeter.vectocidCoorinates[index][1] - TowerCreator.towerList[i][6];
 
         var laserLength = Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
         var rotate = Math.atan(deltaY / deltaX) * (180 / Math.PI);
@@ -362,6 +369,15 @@ var Targeter = (function() {
             greenLaserCannon.style.width = (laserLength - 15) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[i][6] + 5) + 'px';
             greenLaserCannon.style.left = TowerCreator.towerList[i][5] + 'px';
+        }
+        enemyHP += towerDmg
+        console.log(enemyHealth);
+        // console.log(MassVectocid.enemyList[0]);
+        if (enemyHealth <= enemyHP) {
+            MassVectocid.enemyList[index].setAttribute('class', 'hidden');
+            enemyHP = 0;
+            MassVectocid.globalIndex++;
+            targetSystem(MassVectocid.globalIndex)
         }
         setTimeout(function(){ antiLaser(); }, 100);
 

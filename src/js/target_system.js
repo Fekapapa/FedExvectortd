@@ -15,6 +15,7 @@ var getPosition = function(containerTower) {
     // console.log('containerTower: ', containerTower);
     for (let i = 0; i < MassVectocid.enemyList.length; i++) {
         var enemy1 = MassVectocid.enemyList[i];
+        var enemyHp = MassVectocid.oneWave[i][1]
         var enemyPosition = enemy1.getBoundingClientRect();
     }
 
@@ -40,7 +41,7 @@ var getPosition = function(containerTower) {
     //     bottom: oneTowerPosition.bottom + (oneTowerPosition.height * 2)
     // }
     // console.log(oneElement.childNodes[0], oneElement.childNodes[1]);
-    targetSystem(enemyPosition, towerX, towerY);
+    targetSystem(enemyPosition, towerX, towerY, enemyHp);
 }
 
 var targetSystem = function(enemy, towerX, towerY) {
