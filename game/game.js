@@ -190,13 +190,11 @@ var MassVectocid = (function() {
     function generatorStarter() {
         setTimeout(function(){ vectocidGenerator(); }, 500);
         setTimeout(function(){ vectocidGenerator(); }, 500);
-        setTimeout(function(){ targetPrepare(); }, 500);
     }
 
     function nextWave() {
         if (vectocidCounter == 0) {
             generatorStarter();
-            targetPrepare();
             setInterval(function(){ Targeter.coordinateCalculator(); }, 100);
             setInterval(function(){ Targeter.coordinateUpdater(); }, 100);
         }
@@ -273,6 +271,7 @@ var Targeter = (function() {
     var enemyList = [];
     var vectocidCoorinates = [];
     var towerRanges = [];
+    var vectocidHealth = [];
 
     function coordinateCalculator () {
 
@@ -290,10 +289,11 @@ var Targeter = (function() {
     }
 
     function coordinateUpdater () {
-        console.log(MassVectocid.oneWave);
+        // console.log(MassVectocid.oneWave);
         for (let i = 0; i < MassVectocid.enemyList.length; i++) {
             Targeter.vectocidCoorinates[i][0] = MassVectocid.enemyList[i].getBoundingClientRect().left;
             Targeter.vectocidCoorinates[i][1] = MassVectocid.enemyList[i].getBoundingClientRect().top;
+            Targeter.vectocidHealth = MassVectocid.oneWave[i][1];
         }
     }
 
@@ -334,6 +334,9 @@ var Targeter = (function() {
             child.innerhtml = '';
         }
 
+        var towerDmg = TowerCreator.towerList[4];
+        var enemyHealth = Targeter.vectocidHealth;
+
         var deltaX = Targeter.vectocidCoorinates[0][0] - TowerCreator.towerList[0][5];
         var deltaY = Targeter.vectocidCoorinates[0][1] - TowerCreator.towerList[0][6];
 
@@ -365,6 +368,12 @@ var Targeter = (function() {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleX(-1)';
             greenLaserCannon.style.width = (laserLength - 5) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[0][6] + 5) + 'px';
+        }
+
+        enemyHealth -= enemyHealth - towerDmg;
+        if (enemyHealth = 0) {
+            MassVectocid.oneWave[0].style.backgroundColor = 'transparent';
+            enemyHealth = Targeter.vectocidHealth;
         }
     }
 
