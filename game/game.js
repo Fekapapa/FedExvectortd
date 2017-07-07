@@ -259,7 +259,6 @@ var TowerCreator = (function() {
         laserDrawer2.setAttribute('class', 'innerLaserLine');
 
         TowerCreator.towerList.push(['g1', 'level1', e.clientX, e.clientY]);
-        console.log(TowerCreator.towerList);
     }
 
     return {
