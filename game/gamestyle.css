@@ -468,11 +468,8 @@ p {
 
 .greenLaserCannon {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 0px;
-    height: 0px;
     border: 1px solid rgba(0, 255, 0, 0.5);
+    transform-origin: bottom left;
     box-shadow:
     -1px 0px 1px green,
     -3px 0px 3px green,
