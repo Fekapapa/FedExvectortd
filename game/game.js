@@ -50,6 +50,7 @@ var map = [
 })();
 Mapper.mapGenerator();
 
+
 var MassVectocid = (function() {
 
     var waves = [
@@ -196,5 +197,63 @@ var MassVectocid = (function() {
     return {
         nextWave: nextWave,
         generatorStarter: generatorStarter
+    }
+})();
+
+
+var TowerCreator = (function() {
+
+    var towerList = [];
+
+    function hoverTower (type) {
+        let allowBuild = document.querySelectorAll('.buildable');
+        let noBuild = document.querySelectorAll('.road');
+        if (type == 'g1') {
+            for (let i = 0; i < allowBuild.length; i++) {
+                allowBuild[i].setAttribute('class', 'buildable g1');
+                let coordinates = allowBuild[i].getBoundingClientRect();
+                allowBuild[i].setAttribute('onclick', 'TowerCreator.noHover(event, "g1")');
+            }
+            for (let i = 0; i < noBuild.length; i++) {
+                noBuild[i].setAttribute('class', 'road glno');
+                noBuild[i].setAttribute('onclick', 'TowerCreator.noHover(event, "no")');
+            }
+        }
+    }
+
+    function noHover (e, type) {
+        let allowBuild = document.querySelectorAll('.buildable.g1');
+        let noBuild = document.querySelectorAll('.road.glno');
+        for (let i = 0; i < allowBuild.length; i++) {
+            allowBuild[i].setAttribute('class', 'buildable');
+        }
+        for (let i = 0; i < noBuild.length; i++) {
+            noBuild[i].setAttribute('class', 'road');
+        }
+        if (type !== 'no') {
+            towerBuilder(e, type);
+        }
+    }
+
+    function towerBuilder (e, type) {
+        let tower = e.target;
+        tower.setAttribute('class', 'g1');
+
+        let laserDrawer1 = document.createElement('div');
+        tower.appendChild(laserDrawer1);
+        laserDrawer1.setAttribute('class', 'innerLaser');
+
+        let laserDrawer2 = document.createElement('div');
+        tower.appendChild(laserDrawer2);
+        laserDrawer2.setAttribute('class', 'innerLaserLine');
+
+        TowerCreator.towerList.push(['g1', 'level1', e.clientX, e.clientY]);
+        console.log(TowerCreator.towerList);
+    }
+
+    return {
+        hoverTower: hoverTower,
+        noHover: noHover,
+        towerList: towerList
     }
 })();
