@@ -490,3 +490,7 @@ p {
 .none {
     visibility: none;
 }
+
+audio {
+    visibility: hidden;
+}
