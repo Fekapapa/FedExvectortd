@@ -486,3 +486,7 @@ p {
     0px 0px 17px green,
     0px 0px 19px green;
 }
+
+.none {
+    visibility: none;
+}

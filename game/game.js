@@ -190,13 +190,11 @@ var MassVectocid = (function() {
     function generatorStarter() {
         setTimeout(function(){ vectocidGenerator(); }, 500);
         setTimeout(function(){ vectocidGenerator(); }, 500);
-        setTimeout(function(){ targetPrepare(); }, 500);
     }
 
     function nextWave() {
         if (vectocidCounter == 0) {
             generatorStarter();
-            targetPrepare();
             setInterval(function(){ Targeter.coordinateCalculator(); }, 100);
             setInterval(function(){ Targeter.coordinateUpdater(); }, 100);
         }
@@ -290,7 +288,6 @@ var Targeter = (function() {
     }
 
     function coordinateUpdater () {
-        console.log(MassVectocid.oneWave);
         for (let i = 0; i < MassVectocid.enemyList.length; i++) {
             Targeter.vectocidCoorinates[i][0] = MassVectocid.enemyList[i].getBoundingClientRect().left;
             Targeter.vectocidCoorinates[i][1] = MassVectocid.enemyList[i].getBoundingClientRect().top;
@@ -329,10 +326,6 @@ var Targeter = (function() {
     // towerlist[color, attackspeed, cost, damage, range, x coordinate, y coordinate]
 
     function fire() {
-        if (document.querySelector('.greenLaserCannon') !== null) {
-            var child = document.querySelector('.greenLaserCannon');
-            child.innerhtml = '';
-        }
 
         var deltaX = Targeter.vectocidCoorinates[0][0] - TowerCreator.towerList[0][5];
         var deltaY = Targeter.vectocidCoorinates[0][1] - TowerCreator.towerList[0][6];
@@ -344,30 +337,40 @@ var Targeter = (function() {
         var greenLaserCannon = document.createElement('div');
         coordinateSystem.appendChild(greenLaserCannon);
         greenLaserCannon.setAttribute('class', 'greenLaserCannon');
-        greenLaserCannon.style.left = TowerCreator.towerList[0][5] + 'px';
         greenLaserCannon.style.height = '0px';
         if (deltaY < 0 && deltaX < 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleX(-1) scaleY(-1)';
             greenLaserCannon.style.width = (laserLength + 5) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[0][6] - 5) + 'px';
+            greenLaserCannon.style.left = (TowerCreator.towerList[0][5] + 5) + 'px';
         }
         if (deltaY < 0 && deltaX > 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleY(-1)';
             greenLaserCannon.style.width = (laserLength + 5) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[0][6] - 5) + 'px';
+            greenLaserCannon.style.left = (TowerCreator.towerList[0][5] + 5) + 'px';
         }
         if (deltaY > 0 && deltaX > 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleY(-1)';
-            greenLaserCannon.style.width = (laserLength - 5) + 'px';
+            greenLaserCannon.style.width = (laserLength - 15) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[0][6] + 5) + 'px';
+            greenLaserCannon.style.left = TowerCreator.towerList[0][5] + 'px';
         }
         if (deltaY > 0 && deltaX < 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleX(-1)';
-            greenLaserCannon.style.width = (laserLength - 5) + 'px';
+            greenLaserCannon.style.width = (laserLength - 15) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[0][6] + 5) + 'px';
+            greenLaserCannon.style.left = TowerCreator.towerList[0][5] + 'px';
         }
+        setTimeout(function(){ antiLaser(); }, 100);
     }
 
+    function antiLaser() {
+        if (document.querySelector('.greenLaserCannon') !== null) {
+            var laser = document.querySelector('.greenLaserCannon');
+            laser.setAttribute('class', 'none');
+        }
+    }
     return {
         coordinateCalculator: coordinateCalculator,
         towerRanges: towerRanges,
