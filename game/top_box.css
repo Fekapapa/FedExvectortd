@@ -65,6 +65,7 @@
 }
 
 .topBox_left p {
+    box-sizing: border-box;
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     color: gold;
