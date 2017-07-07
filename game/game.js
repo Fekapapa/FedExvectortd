@@ -66,17 +66,21 @@ var MassVectocid = (function() {
     var waveCounter = 0;
     var oneWave = [];
     var vectocidCounter = 0;
+    var enemyList1 = [];
+    var enemyList2 = [];
 
     function vectocidGenerator() {
         vectocidCounter++;
         let mapcontainer = document.querySelector('.mapContainer');
-
         let outerContainer = document.createElement('div');
+
         mapcontainer.appendChild(outerContainer);
 
         if (vectocidCounter % 2 == 1) {
             oneWave.push(waves[waveCounter]);
             outerContainer.setAttribute('class', 'outerContainer1');
+
+            enemyList1.push(outerContainer);
 
             var mainContainer = document.createElement('div');
             outerContainer.appendChild(mainContainer);
@@ -86,6 +90,8 @@ var MassVectocid = (function() {
         if (vectocidCounter % 2 == 0) {
             oneWave.push(waves[waveCounter]);
             outerContainer.setAttribute('class', 'outerContainer2');
+            let outerContainer2 = document.querySelector('outerContainer2');
+            enemyList2.push(outerContainer2);
 
             var mainContainer = document.createElement('div');
             outerContainer.appendChild(mainContainer);
@@ -175,7 +181,7 @@ var MassVectocid = (function() {
             mainContainer.appendChild(eigtharm);
             eigtharm.setAttribute('class', 'eigth arm');
         }
-        console.log(vectocidCounter);
+        // console.log(vectocidCounter);
 
         if (vectocidCounter == 28) {
             vectocidCounter = 0;
@@ -186,15 +192,20 @@ var MassVectocid = (function() {
     function generatorStarter() {
         setTimeout(function(){ vectocidGenerator(); }, 500);
         setTimeout(function(){ vectocidGenerator(); }, 500);
+        setTimeout(function(){ targetPrepare(); }, 500);
     }
 
     function nextWave() {
         if (vectocidCounter == 0) {
             generatorStarter();
+            // getPosition();
+            targetPrepare();
         }
     }
 
     return {
+        enemyList1: enemyList1,
+        enemyList2: enemyList2,
         nextWave: nextWave,
         generatorStarter: generatorStarter
     }
