@@ -59,7 +59,7 @@
     height: 30px;
     width: 100%;
     position: absolute;
-    top: -10px;
+    top: 0;
     left: 0;
     margin: 0;
 }
@@ -78,13 +78,15 @@
 }
 
 .company_name1 {
+    margin: 0;
     margin-left: 10px;
     margin-bottom: 0;
+    margin-top: 10px;
 }
 .company_name2 {
+    margin: 0;
     margin-left: 100px;
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin-top: 3px;
 }
 
 .text_container_shadow .company_name1, .company_name2 {
