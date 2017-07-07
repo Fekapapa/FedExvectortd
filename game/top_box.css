@@ -31,15 +31,17 @@
 }
 
 .next_wave {
+    padding: 2px 2px;
     align-self: center;
     height: 28px;
-    width: 90px;
+    width: 100px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(140, 7, 48);
     background-color: rgb(246, 75, 127);
     font-family: 'Orbitron', sans-serif;
-    padding-top: 5px;
+    line-height: 20px;
+    text-align: center;
 }
 
 .next_wave:hover, .quitBox:hover, .pauseBox:hover {
@@ -82,7 +84,6 @@
     margin: 0;
     margin-left: 10px;
     margin-bottom: 0;
-    margin-top: 10px;
 }
 .company_name2 {
     margin: 0;

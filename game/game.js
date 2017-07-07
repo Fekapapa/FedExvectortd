@@ -317,18 +317,19 @@ var Targeter = (function() {
     }
 
     function targetSystem () {
-        if (Targeter.towerRanges[0][6]>= Targeter.vectocidCoorinates[0][0] && Targeter.towerRanges[0][5] <= Targeter.vectocidCoorinates[0][0]){
-            if (Targeter.towerRanges[0][8] >= Targeter.vectocidCoorinates[0][1] && Targeter.towerRanges[0][7] <= Targeter.vectocidCoorinates[0][1]) {
-                Targeter.fire()
+        for (let i = 0; i < Targeter.towerRanges.length; i++) {
+            if (Targeter.towerRanges[i][6]>= Targeter.vectocidCoorinates[0][0] && Targeter.towerRanges[i][5] <= Targeter.vectocidCoorinates[0][0]){
+                if (Targeter.towerRanges[i][8] >= Targeter.vectocidCoorinates[0][1] && Targeter.towerRanges[i][7] <= Targeter.vectocidCoorinates[0][1]) {
+                    Targeter.fire(i)
+                }
             }
         }
     }
     // towerlist[color, attackspeed, cost, damage, range, x coordinate, y coordinate]
 
-    function fire() {
-
-        var deltaX = Targeter.vectocidCoorinates[0][0] - TowerCreator.towerList[0][5];
-        var deltaY = Targeter.vectocidCoorinates[0][1] - TowerCreator.towerList[0][6];
+    function fire(i) {
+        var deltaX = Targeter.vectocidCoorinates[0][0] - TowerCreator.towerList[i][5];
+        var deltaY = Targeter.vectocidCoorinates[0][1] - TowerCreator.towerList[i][6];
 
         var laserLength = Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
         var rotate = Math.atan(deltaY / deltaX) * (180 / Math.PI);
@@ -341,28 +342,29 @@ var Targeter = (function() {
         if (deltaY < 0 && deltaX < 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleX(-1) scaleY(-1)';
             greenLaserCannon.style.width = (laserLength + 5) + 'px';
-            greenLaserCannon.style.top = (TowerCreator.towerList[0][6] - 5) + 'px';
-            greenLaserCannon.style.left = (TowerCreator.towerList[0][5] + 5) + 'px';
+            greenLaserCannon.style.top = (TowerCreator.towerList[i][6] - 5) + 'px';
+            greenLaserCannon.style.left = (TowerCreator.towerList[i][5] + 5) + 'px';
         }
         if (deltaY < 0 && deltaX > 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleY(-1)';
             greenLaserCannon.style.width = (laserLength + 5) + 'px';
-            greenLaserCannon.style.top = (TowerCreator.towerList[0][6] - 5) + 'px';
-            greenLaserCannon.style.left = (TowerCreator.towerList[0][5] + 5) + 'px';
+            greenLaserCannon.style.top = (TowerCreator.towerList[i][6] - 5) + 'px';
+            greenLaserCannon.style.left = (TowerCreator.towerList[i][5] + 5) + 'px';
         }
         if (deltaY > 0 && deltaX > 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleY(-1)';
             greenLaserCannon.style.width = (laserLength - 15) + 'px';
-            greenLaserCannon.style.top = (TowerCreator.towerList[0][6] + 5) + 'px';
-            greenLaserCannon.style.left = TowerCreator.towerList[0][5] + 'px';
+            greenLaserCannon.style.top = (TowerCreator.towerList[i][6] + 5) + 'px';
+            greenLaserCannon.style.left = TowerCreator.towerList[i][5] + 'px';
         }
         if (deltaY > 0 && deltaX < 0) {
             greenLaserCannon.style.transform = 'rotate(' + rotate + 'deg) scaleX(-1)';
             greenLaserCannon.style.width = (laserLength - 15) + 'px';
-            greenLaserCannon.style.top = (TowerCreator.towerList[0][6] + 5) + 'px';
-            greenLaserCannon.style.left = TowerCreator.towerList[0][5] + 'px';
+            greenLaserCannon.style.top = (TowerCreator.towerList[i][6] + 5) + 'px';
+            greenLaserCannon.style.left = TowerCreator.towerList[i][5] + 'px';
         }
         setTimeout(function(){ antiLaser(); }, 100);
+
     }
 
     function antiLaser() {
