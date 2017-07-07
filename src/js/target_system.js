@@ -44,7 +44,7 @@ var getPosition = function(containerTower) {
 }
 
 var targetSystem = function(enemy, towerX, towerY) {
-    console.log('enemyPosition: ', enemy);
+    // console.log('enemyPosition: ', enemy);
     // console.log('enemyList1: ', MassVectocid.enemyList1);
     // console.log('enemy: ', enemyY, enemyX, "\n", 'tower: ', towerX, towerY);
 
