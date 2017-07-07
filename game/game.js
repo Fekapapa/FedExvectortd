@@ -54,7 +54,7 @@ Mapper.mapGenerator();
 var MassVectocid = (function() {
 
     var waves = [
-        ['blue', 550, 3], ['red', 660, 4], ['blue', 769, 5], ['green', 896, 6], ['grey', 1045, 7],
+        ['red', 550, 3], ['blue', 660, 4], ['yellow', 769, 5], ['green', 896, 6], ['grey', 1045, 7],
         ['yellow', 1185, 8], ['blue', 1422, 9], ['purple', 1658, 10], ['blue', 1934, 11], ['grey', 2256, 12],
         ['blue', 2631, 13], ['green', 3069, 14], ['blue', 3580, 15], ['yellow', 4177, 16], ['grey', 4873, 17],
         ['purple', 5684, 18], ['blue', 6631, 19], ['red', 7736, 20], ['blue', 9025, 21], ['grey', 10528, 22],
