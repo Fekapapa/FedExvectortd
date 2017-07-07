@@ -334,15 +334,10 @@ var Targeter = (function() {
     // towerlist[color, attackspeed, cost, damage, range, x coordinate, y coordinate]
 
     function fire() {
-        // if (document.querySelector('.greenLaserCannon') !== null) {
-        //     var child = document.querySelector('#coordinates');
-        //     child.removeChild(greenLaserCannon);
-        // }
-        // console.log('TOWER TARGETING!');
-        // console.log('vectocid X coordinate: ' + Targeter.vectocidCoorinates[0][0]);
-        // console.log('vectocid Y coordinate: ' + Targeter.vectocidCoorinates[0][1]);
-        // console.log('tower X coordinate: ' + TowerCreator.towerList[0][5]);
-        // console.log('tower Y coordinate: ' + TowerCreator.towerList[0][6]);
+        if (document.querySelector('.greenLaserCannon') !== null) {
+            var child = document.querySelector('.greenLaserCannon');
+            child.innerhtml = '';
+        }
 
         var deltaX = Targeter.vectocidCoorinates[0][0] - TowerCreator.towerList[0][5];
         var deltaY = Targeter.vectocidCoorinates[0][1] - TowerCreator.towerList[0][6];
@@ -376,8 +371,6 @@ var Targeter = (function() {
             greenLaserCannon.style.width = (laserLength - 5) + 'px';
             greenLaserCannon.style.top = (TowerCreator.towerList[0][6] + 5) + 'px';
         }
-        console.log(deltaX);
-        console.log(deltaY);
     }
 
     return {
