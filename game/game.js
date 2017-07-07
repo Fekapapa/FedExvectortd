@@ -66,8 +66,6 @@ var MassVectocid = (function() {
     var waveCounter = 0;
     var oneWave = [];
     var vectocidCounter = 0;
-    var enemyList1 = [];
-    var enemyList2 = [];
     var enemyList = [];
 
     function vectocidGenerator() {
@@ -81,7 +79,6 @@ var MassVectocid = (function() {
             oneWave.push(waves[waveCounter]);
             outerContainer.setAttribute('class', 'outerContainer1');
 
-            enemyList1.push(outerContainer);
             enemyList.push(outerContainer);
 
             var mainContainer = document.createElement('div');
@@ -93,7 +90,6 @@ var MassVectocid = (function() {
             oneWave.push(waves[waveCounter]);
             outerContainer.setAttribute('class', 'outerContainer2');
             let outerContainer2 = document.querySelector('outerContainer2');
-            enemyList2.push(outerContainer);
             enemyList.push(outerContainer);
 
             var mainContainer = document.createElement('div');
@@ -200,7 +196,6 @@ var MassVectocid = (function() {
     function nextWave() {
         if (vectocidCounter == 0) {
             generatorStarter();
-            // getPosition();
             targetPrepare();
             setInterval(function(){ Targeter.coordinateCalculator(); }, 100);
             setInterval(function(){ Targeter.coordinateUpdater(); }, 100);
@@ -208,8 +203,7 @@ var MassVectocid = (function() {
     }
 
     return {
-        enemyList1: enemyList1,
-        enemyList2: enemyList2,
+        oneWave: oneWave,
         enemyList: enemyList,
         nextWave: nextWave,
         generatorStarter: generatorStarter
@@ -296,6 +290,7 @@ var Targeter = (function() {
     }
 
     function coordinateUpdater () {
+        console.log(MassVectocid.oneWave);
         for (let i = 0; i < MassVectocid.enemyList.length; i++) {
             Targeter.vectocidCoorinates[i][0] = MassVectocid.enemyList[i].getBoundingClientRect().left;
             Targeter.vectocidCoorinates[i][1] = MassVectocid.enemyList[i].getBoundingClientRect().top;
