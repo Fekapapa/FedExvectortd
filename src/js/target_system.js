@@ -13,8 +13,8 @@ var targetPrepare = function() {
 
 var getPosition = function(containerTower) {
     // console.log('containerTower: ', containerTower);
-    for (let i = 0; i < MassVectocid.enemyList1.length; i++) {
-        var enemy1 = MassVectocid.enemyList1[i];
+    for (let i = 0; i < MassVectocid.enemyList.length; i++) {
+        var enemy1 = MassVectocid.enemyList[i];
         var enemyPosition = enemy1.getBoundingClientRect();
     }
 
